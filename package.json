@@ -1,0 +1,19 @@
+{
+  "name": "bytebank",
+  "version": "1.0.0",
+  "description": "Projeto do bytebank produzido durante curso da alura",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/douglasmatosdev/bytebank.git"
+  },
+  "author": "Douglas Matos da Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/douglasmatosdev/bytebank/issues"
+  },
+  "homepage": "https://github.com/douglasmatosdev/bytebank#readme"
+}
