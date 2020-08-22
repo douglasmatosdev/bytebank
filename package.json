@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Projeto do bytebank produzido durante curso da alura",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-modules index.js"
   },
   "repository": {
     "type": "git",
