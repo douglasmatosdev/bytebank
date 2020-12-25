@@ -1,54 +1,53 @@
-import { Cliente } from "./Cliente.js";
+import { Cliente } from "./Cliente.js"
 
-export class ContaCorrente{
-    static numeroDeContas = 0;
-    agencia;
-    _cliente;
-   // #saldo =0 https://github.com/tc39/proposal-class-fields#private-fields
-   _saldo = 0;
+export class ContaCorrente {
+    // atributos estaticos
+    static numeroDeContas = 0
+
+    // atributos públicos
+    agencia
     
+    // atributos privados
+    #cliente
+    #saldo = 0
 
+    constructor(cliente, agencia) {
+        this.cliente = cliente
+        this.agencia = agencia
+        ContaCorrente.numeroDeContas += 1
+    }
 
-    set cliente(novoValor){
-        if(novoValor instanceof Cliente){
-            this._cliente = novoValor;
+    set cliente(novoValor) {
+        if (novoValor instanceof Cliente) {
+
+            this.#cliente = novoValor
+        }
+    }
+    get cliente() {
+        return this.#cliente
+    }
+    get saldo() {
+        return this.#saldo
+    }
+
+    sacar(valor) {
+        if (this.#saldo >= valor) {
+            this.#saldo -= valor
+
+            return valor
         }
     }
 
-    get cliente(){
-        return this._cliente;
+    depositar(valor) {
+        if(valor <= 0) return
+
+        this.#saldo += valor
     }
 
-    get saldo(){
-        return this._saldo;
+    transferir(valor, conta) {
+        const valorSacado = this.sacar(valor)
+        conta.depositar(valorSacado)
     }
 
-    constructor(agencia, cliente){
-        this.agencia = agencia;
-        this.cliente = cliente;
-        ContaCorrente.numeroDeContas += 1;
-    }
-
-
-    sacar(valor){
-        if(this._saldo >= valor){
-            this._saldo -= valor;
-            return valor;
-        }
-    }
-
-    depositar(valor){
-        if(valor <= 0)
-        {
-            return;
-        } 
-        this._saldo += valor;           
-    }
-
-    tranferir(valor, conta){
-        
-        const valorSacado = this.sacar(valor);
-        conta.depositar(valorSacado);
-        
-    }
+   
 }
